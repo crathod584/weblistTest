@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <div class="d-flex d-md-flex d-lg-flex d-sm-flex justify-content-sm-center justify-content-md-center justify-content-lg-center justify-content-center" >
+    <!-- 
+      <form #ngForm="ngForm" [formGroup]="loginForm" name="loginForm" (ngSubmit)="login()" autocomplete="off">
+        <div >
+          <div [ngClass]="{'fieldInvaild':ngForm.submitted && f.email.errors}">
+            <input trim="blur" focus class="input-field" type="email" formControlName="email" placeholder="Email">
+            <span class="error-msg" *ngIf="ngForm.submitted && f.email.errors">Email Invalid</span>
+          </div>
+          <div [ngClass]="{'fieldInvaild':ngForm.submitted && f.password.errors}">
+            <input class="input-field" type="password" formControlName="password" placeholder="Password">
+            <span *ngIf="ngForm.submitted && f.password.errors" class="error-msg"></span>
+          </div>
+          <div >
+            <button [disabled]="loginButtonDisable">Sign In</button>
+          </div>
+        </div>
+      </form> -->
+     
+     <form #ngForm="ngForm" [formGroup]="loginForm" name="loginForm" (ngSubmit)="login()" autocomplete="off">
+  <div class="form-group" [ngClass]="{'fieldInvaild':ngForm.submitted && f.email.errors}">
+    <label >Email address</label>
+    <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+    <small class="form-text text-muted" *ngIf="ngForm.submitted && f.email.errors">Email Invalid</small>
+  </div>
+  <div class="form-group" [ngClass]="{'fieldInvaild':ngForm.submitted && f.password.errors}">
+    <label >Password</label>
+    <input type="password" class="form-control" placeholder="Password" formControlName="password">
+    <small *ngIf="ngForm.submitted && f.password.errors" class="form-text text-muted">Password is required</small>
+
+  </div>
+  <button [disabled]="loginButtonDisable" class="btn btn-primary">Sign In</button>
+</form>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
