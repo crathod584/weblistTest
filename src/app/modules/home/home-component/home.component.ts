@@ -24,21 +24,31 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  countActiveUser(data) {
-    let activeUser: any = [];
-    
-    // o(n)
-    activeUser = data.filter((user, index, array) => {
-      return array.indexOf(user.userId) === index; 
-    });
-    
-    // O(n)   time comlexity of sort function is depend on browser and length of array   
-    activeUser.sort(function(a, b){
-     return a.timestamp-b.timestamp
-    })
-    
-    // Time Complexity O(n+n) = O(2n)
-    return activeUser;
+  function countActiveUser(data) {
+
+  let userID = [];
+  let activeUsersCount = {};
+
+  for (let i = 0; i < 24; i++) {
+    userID[i] = {};
+    activeUsersCount[i] = 0;
   }
+
+  data.map((item) => {
+
+    let hour = new Date(item.timestamp * 1000).getHours();
+
+    if (userID[hour][item.userId])
+      return true;
+
+    userID[hour][item.userId] = true;
+    
+    activeUsersCount[hour]++;
+
+  });
+
+  return activeUsersCount;
+}
+
 
 }
